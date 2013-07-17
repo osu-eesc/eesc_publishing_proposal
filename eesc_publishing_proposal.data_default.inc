@@ -1,0 +1,343 @@
+<?php
+/**
+ * @file
+ * eesc_publishing_proposal.data_default.inc
+ */
+
+/**
+ * Implements hook_data_default().
+ */
+function eesc_publishing_proposal_data_default() {
+  $export = array();
+
+  $data_table = new stdClass();
+  $data_table->disabled = FALSE; /* Edit this to true to make a default data_table disabled initially */
+  $data_table->api_version = 1;
+  $data_table->title = 'Webform views eesc publishing proposal 237';
+  $data_table->name = 'webform_views_eesc_publishing_proposal_237';
+  $data_table->table_schema = array(
+    'description' => 'VIEW',
+    'fields' => array(
+      'sid' => array(
+        'type' => 'int',
+        'size' => 'normal',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'The unique identifier for this submission.',
+      ),
+      'uid' => array(
+        'type' => 'int',
+        'size' => 'normal',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'The id of the user that completed this submission.',
+      ),
+      'project_title' => array(
+        'type' => 'varchar',
+        'size' => 'normal',
+        'length' => '341',
+        'not null' => FALSE,
+        'description' => '',
+      ),
+      'new_or_revision' => array(
+        'type' => 'varchar',
+        'size' => 'normal',
+        'length' => '341',
+        'not null' => FALSE,
+        'description' => '',
+      ),
+      'project_manager' => array(
+        'type' => 'varchar',
+        'size' => 'normal',
+        'length' => '341',
+        'not null' => FALSE,
+        'description' => '',
+      ),
+      'questions' => array(
+        'type' => 'varchar',
+        'size' => 'normal',
+        'length' => '341',
+        'not null' => FALSE,
+        'description' => '',
+      ),
+      'additional_information' => array(
+        'type' => 'varchar',
+        'size' => 'normal',
+        'length' => '341',
+        'not null' => FALSE,
+        'description' => '',
+      ),
+      'status' => array(
+        'type' => 'varchar',
+        'size' => 'normal',
+        'length' => '341',
+        'not null' => FALSE,
+        'description' => '',
+      ),
+      'original_publication_number_or_url' => array(
+        'type' => 'varchar',
+        'size' => 'normal',
+        'length' => '341',
+        'not null' => FALSE,
+        'description' => '',
+      ),
+      'corresponding_author_name' => array(
+        'type' => 'varchar',
+        'size' => 'normal',
+        'length' => '341',
+        'not null' => FALSE,
+        'description' => '',
+      ),
+      'project_summary' => array(
+        'type' => 'varchar',
+        'size' => 'normal',
+        'length' => '341',
+        'not null' => FALSE,
+        'description' => '',
+      ),
+      'status_date' => array(
+        'type' => 'varchar',
+        'size' => 'normal',
+        'length' => '341',
+        'not null' => FALSE,
+        'description' => '',
+      ),
+      'audience' => array(
+        'type' => 'varchar',
+        'size' => 'normal',
+        'length' => '341',
+        'not null' => FALSE,
+        'description' => '',
+      ),
+      'due_date' => array(
+        'type' => 'varchar',
+        'size' => 'normal',
+        'length' => '341',
+        'not null' => FALSE,
+        'description' => '',
+      ),
+      'learning_outcomes' => array(
+        'type' => 'varchar',
+        'size' => 'normal',
+        'length' => '341',
+        'not null' => FALSE,
+        'description' => '',
+      ),
+      'why_on_hold' => array(
+        'type' => 'varchar',
+        'size' => 'normal',
+        'length' => '341',
+        'not null' => FALSE,
+        'description' => '',
+      ),
+      'pnw_publishing' => array(
+        'type' => 'varchar',
+        'size' => 'normal',
+        'length' => '341',
+        'not null' => FALSE,
+        'description' => '',
+      ),
+      'corresponding_author_phone' => array(
+        'type' => 'varchar',
+        'size' => 'normal',
+        'length' => '341',
+        'not null' => FALSE,
+        'description' => '',
+      ),
+      'explain_other_direction' => array(
+        'type' => 'varchar',
+        'size' => 'normal',
+        'length' => '341',
+        'not null' => FALSE,
+        'description' => '',
+      ),
+      'corresponding_author_email' => array(
+        'type' => 'varchar',
+        'size' => 'normal',
+        'length' => '341',
+        'not null' => FALSE,
+        'description' => '',
+      ),
+      'why_withdrawn' => array(
+        'type' => 'varchar',
+        'size' => 'normal',
+        'length' => '341',
+        'not null' => FALSE,
+        'description' => '',
+      ),
+      'related_files' => array(
+        'type' => 'varchar',
+        'size' => 'normal',
+        'length' => '341',
+        'not null' => FALSE,
+        'description' => '',
+      ),
+      'person_submitting_proposal' => array(
+        'type' => 'varchar',
+        'size' => 'normal',
+        'length' => '341',
+        'not null' => FALSE,
+        'description' => '',
+      ),
+      'related_files_2' => array(
+        'type' => 'varchar',
+        'size' => 'normal',
+        'length' => '341',
+        'not null' => FALSE,
+        'description' => '',
+      ),
+      'person_submitting_email' => array(
+        'type' => 'varchar',
+        'size' => 'normal',
+        'length' => '341',
+        'not null' => FALSE,
+        'description' => '',
+      ),
+      'project_stage' => array(
+        'type' => 'varchar',
+        'size' => 'normal',
+        'length' => '341',
+        'not null' => FALSE,
+        'description' => '',
+      ),
+      'program_area' => array(
+        'type' => 'varchar',
+        'size' => 'normal',
+        'length' => '341',
+        'not null' => FALSE,
+        'description' => '',
+      ),
+      'media_type' => array(
+        'type' => 'varchar',
+        'size' => 'normal',
+        'length' => '341',
+        'not null' => FALSE,
+        'description' => '',
+      ),
+      'notes' => array(
+        'type' => 'varchar',
+        'size' => 'normal',
+        'length' => '341',
+        'not null' => FALSE,
+        'description' => '',
+      ),
+      'copies_per_year' => array(
+        'type' => 'varchar',
+        'size' => 'normal',
+        'length' => '341',
+        'not null' => FALSE,
+        'description' => '',
+      ),
+      'project_size' => array(
+        'type' => 'varchar',
+        'size' => 'normal',
+        'length' => '341',
+        'not null' => FALSE,
+        'description' => '',
+      ),
+      'grant_funded' => array(
+        'type' => 'varchar',
+        'size' => 'normal',
+        'length' => '341',
+        'not null' => FALSE,
+        'description' => '',
+      ),
+      'is_there_deadline' => array(
+        'type' => 'varchar',
+        'size' => 'normal',
+        'length' => '341',
+        'not null' => FALSE,
+        'description' => '',
+      ),
+      'what_is_deadline' => array(
+        'type' => 'varchar',
+        'size' => 'normal',
+        'length' => '341',
+        'not null' => FALSE,
+        'description' => '',
+      ),
+      'submit_materials_date' => array(
+        'type' => 'varchar',
+        'size' => 'normal',
+        'length' => '341',
+        'not null' => FALSE,
+        'description' => '',
+      ),
+      'revision_timeline' => array(
+        'type' => 'varchar',
+        'size' => 'normal',
+        'length' => '341',
+        'not null' => FALSE,
+        'description' => '',
+      ),
+      'submitted' => array(
+        'type' => 'datetime',
+        'size' => 'normal',
+        'not null' => FALSE,
+        'description' => '',
+      ),
+      'remote_addr' => array(
+        'type' => 'varchar',
+        'size' => 'normal',
+        'length' => '128',
+        'not null' => FALSE,
+        'description' => 'The IP address of the user that submitted the form.',
+      ),
+    ),
+    'name' => 'webform_views_eesc_publishing_proposal_237',
+  );
+  $data_table->meta = array(
+    'fields' => array(
+      'sid' => array(),
+      'uid' => array(),
+      'project_title' => array(),
+      'new_or_revision' => array(),
+      'project_manager' => array(),
+      'questions' => array(),
+      'additional_information' => array(),
+      'status' => array(),
+      'original_publication_number_or_url' => array(),
+      'corresponding_author_name' => array(),
+      'project_summary' => array(),
+      'status_date' => array(),
+      'audience' => array(),
+      'due_date' => array(),
+      'learning_outcomes' => array(),
+      'why_on_hold' => array(),
+      'pnw_publishing' => array(),
+      'corresponding_author_phone' => array(),
+      'explain_other_direction' => array(),
+      'corresponding_author_email' => array(),
+      'why_withdrawn' => array(),
+      'related_files' => array(),
+      'person_submitting_proposal' => array(),
+      'related_files_2' => array(),
+      'person_submitting_email' => array(),
+      'project_stage' => array(),
+      'program_area' => array(),
+      'media_type' => array(),
+      'notes' => array(),
+      'copies_per_year' => array(),
+      'project_size' => array(),
+      'grant_funded' => array(),
+      'is_there_deadline' => array(),
+      'what_is_deadline' => array(),
+      'submit_materials_date' => array(),
+      'revision_timeline' => array(),
+      'submitted' => array(),
+      'remote_addr' => array(),
+    ),
+    'join' => array(
+      'webform_submissions' => array(
+        'left_field' => 'sid',
+        'field' => 'sid',
+        'inner_join' => '0',
+      ),
+    ),
+  );
+  $export['webform_views_eesc_publishing_proposal_237'] = $data_table;
+
+  return $export;
+}
