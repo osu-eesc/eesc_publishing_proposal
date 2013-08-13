@@ -13,8 +13,8 @@ function eesc_publishing_proposal_data_default() {
   $data_table = new stdClass();
   $data_table->disabled = FALSE; /* Edit this to true to make a default data_table disabled initially */
   $data_table->api_version = 1;
-  $data_table->title = 'Webform views eesc publishing proposal 237';
-  $data_table->name = 'webform_views_eesc_publishing_proposal_237';
+  $data_table->title = 'Webform views eesc project proposal 237';
+  $data_table->name = 'webform_views_eesc_project_proposal_237';
   $data_table->table_schema = array(
     'description' => 'VIEW',
     'fields' => array(
@@ -286,7 +286,7 @@ function eesc_publishing_proposal_data_default() {
         'description' => 'The IP address of the user that submitted the form.',
       ),
     ),
-    'name' => 'webform_views_eesc_publishing_proposal_237',
+    'name' => 'webform_views_eesc_project_proposal_237',
   );
   $data_table->meta = array(
     'fields' => array(
@@ -337,7 +337,7 @@ function eesc_publishing_proposal_data_default() {
       ),
     ),
   );
-  $export['webform_views_eesc_publishing_proposal_237'] = $data_table;
+  $export['webform_views_eesc_project_proposal_237'] = $data_table;
 
   return $export;
 }
