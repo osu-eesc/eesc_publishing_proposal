@@ -212,8 +212,8 @@ function eesc_publishing_proposal_views_default_views() {
   $handler->display->display_options['filters']['combine']['fields'] = array(
     'sid' => 'sid',
     'project_title' => 'project_title',
-    'corresponding_author_name' => 'corresponding_author_name',
     'project_manager' => 'project_manager',
+    'corresponding_author_name' => 'corresponding_author_name',
     'notes' => 'notes',
   );
 
@@ -268,6 +268,54 @@ function eesc_publishing_proposal_views_default_views() {
   $handler->display->display_options['fields']['project_title']['field'] = 'project_title';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
+
+  /* Display: Data export */
+  $handler = $view->new_display('views_data_export', 'Data export', 'views_data_export_1');
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['style_plugin'] = 'views_data_export_csv';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Webform submissions: Sid */
+  $handler->display->display_options['fields']['sid']['id'] = 'sid';
+  $handler->display->display_options['fields']['sid']['table'] = 'webform_submissions';
+  $handler->display->display_options['fields']['sid']['field'] = 'sid';
+  $handler->display->display_options['fields']['sid']['label'] = 'Proposal ID';
+  /* Field: Webform views eesc project proposal 237: Project title */
+  $handler->display->display_options['fields']['project_title']['id'] = 'project_title';
+  $handler->display->display_options['fields']['project_title']['table'] = 'webform_views_eesc_project_proposal_237';
+  $handler->display->display_options['fields']['project_title']['field'] = 'project_title';
+  /* Field: Webform submissions: Submitted */
+  $handler->display->display_options['fields']['submitted']['id'] = 'submitted';
+  $handler->display->display_options['fields']['submitted']['table'] = 'webform_submissions';
+  $handler->display->display_options['fields']['submitted']['field'] = 'submitted';
+  $handler->display->display_options['fields']['submitted']['label'] = 'Submit Date';
+  $handler->display->display_options['fields']['submitted']['date_format'] = 'custom';
+  $handler->display->display_options['fields']['submitted']['custom_date_format'] = 'Y-m-d';
+  /* Field: Webform views eesc project proposal 237: New or revision */
+  $handler->display->display_options['fields']['new_or_revision']['id'] = 'new_or_revision';
+  $handler->display->display_options['fields']['new_or_revision']['table'] = 'webform_views_eesc_project_proposal_237';
+  $handler->display->display_options['fields']['new_or_revision']['field'] = 'new_or_revision';
+  /* Field: Webform views eesc project proposal 237: Project manager */
+  $handler->display->display_options['fields']['project_manager']['id'] = 'project_manager';
+  $handler->display->display_options['fields']['project_manager']['table'] = 'webform_views_eesc_project_proposal_237';
+  $handler->display->display_options['fields']['project_manager']['field'] = 'project_manager';
+  /* Field: Webform views eesc project proposal 237: Corresponding author name */
+  $handler->display->display_options['fields']['corresponding_author_name']['id'] = 'corresponding_author_name';
+  $handler->display->display_options['fields']['corresponding_author_name']['table'] = 'webform_views_eesc_project_proposal_237';
+  $handler->display->display_options['fields']['corresponding_author_name']['field'] = 'corresponding_author_name';
+  /* Field: Webform views eesc project proposal 237: Status date */
+  $handler->display->display_options['fields']['status_date']['id'] = 'status_date';
+  $handler->display->display_options['fields']['status_date']['table'] = 'webform_views_eesc_project_proposal_237';
+  $handler->display->display_options['fields']['status_date']['field'] = 'status_date';
+  /* Field: Webform views eesc project proposal 237: Notes */
+  $handler->display->display_options['fields']['notes']['id'] = 'notes';
+  $handler->display->display_options['fields']['notes']['table'] = 'webform_views_eesc_project_proposal_237';
+  $handler->display->display_options['fields']['notes']['field'] = 'notes';
+  $handler->display->display_options['path'] = 'proposal/list/csv';
+  $handler->display->display_options['displays'] = array(
+    'page' => 'page',
+    'default' => 0,
+    'proposals' => 0,
+  );
   $export['master_proposal_list'] = $view;
 
   return $export;
