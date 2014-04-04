@@ -12,14 +12,8 @@ function eesc_publishing_proposal_user_default_roles() {
 
   // Exported role: administrator.
   $roles['administrator'] = array(
-    'name' => 'administrator',
-    'weight' => 3,
-  );
-
-  // Exported role: site editor.
-  $roles['site editor'] = array(
-    'name' => 'site editor',
-    'weight' => 4,
+    'name' => 'Administrator',
+    'weight' => 2,
   );
 
   return $roles;
