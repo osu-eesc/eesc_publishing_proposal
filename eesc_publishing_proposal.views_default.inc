@@ -24,6 +24,7 @@ function eesc_publishing_proposal_views_default_views() {
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Master Proposal List';
   $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['link_display'] = 'page';
   $handler->display->display_options['access']['type'] = 'role';
   $handler->display->display_options['access']['role'] = array(
     3 => '3',
@@ -33,8 +34,35 @@ function eesc_publishing_proposal_views_default_views() {
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
-  $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
+  $handler->display->display_options['exposed_form']['type'] = 'better_exposed_filters';
+  $handler->display->display_options['exposed_form']['options']['bef'] = array(
+    'general' => array(
+      'allow_secondary' => 0,
+      'secondary_label' => 'Advanced options',
+    ),
+    'pager' => array(
+      'bef_format' => 'default',
+      'is_secondary' => 0,
+    ),
+    'combine' => array(
+      'bef_format' => 'default',
+      'more_options' => array(
+        'is_secondary' => 0,
+        'any_label' => '',
+        'bef_filter_description' => '',
+        'tokens' => array(
+          'available' => array(
+            0 => 'global_types',
+          ),
+        ),
+        'rewrite' => array(
+          'filter_rewrite_values' => '',
+        ),
+      ),
+    ),
+  );
+  $handler->display->display_options['exposed_form']['options']['input_required'] = 0;
+  $handler->display->display_options['exposed_form']['options']['text_input_required_format'] = 'full_html';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
   $handler->display->display_options['pager']['options']['offset'] = '0';
@@ -134,6 +162,16 @@ function eesc_publishing_proposal_views_default_views() {
   );
   $handler->display->display_options['style_options']['caption'] = 'Proposal submissions list';
   $handler->display->display_options['style_options']['summary'] = 'Displays list of project proposals';
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['label'] = 'default no results message';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = '<h3>Sorry. I couldn\'t find any proposals matching your search.</h3>
+
+<p class="kitten">Try changing your search criteria.<br />Good luck! - Catman Jr.</p>';
+  $handler->display->display_options['empty']['area']['format'] = 'full_html';
   /* Relationship: Webform submissions: Node */
   $handler->display->display_options['relationships']['nid']['id'] = 'nid';
   $handler->display->display_options['relationships']['nid']['table'] = 'webform_submissions';
@@ -198,12 +236,6 @@ function eesc_publishing_proposal_views_default_views() {
   $handler->display->display_options['fields']['notes']['table'] = 'webform_views_eesc_project_proposal_237';
   $handler->display->display_options['fields']['notes']['field'] = 'notes';
   $handler->display->display_options['fields']['notes']['ui_name'] = 'Notes';
-  /* Field: Edit link */
-  $handler->display->display_options['fields']['edit_submission']['id'] = 'edit_submission';
-  $handler->display->display_options['fields']['edit_submission']['table'] = 'webform_submissions';
-  $handler->display->display_options['fields']['edit_submission']['field'] = 'edit_submission';
-  $handler->display->display_options['fields']['edit_submission']['ui_name'] = 'Edit link';
-  $handler->display->display_options['fields']['edit_submission']['element_label_colon'] = FALSE;
   /* Filter criterion: Global: Combine fields filter */
   $handler->display->display_options['filters']['combine']['id'] = 'combine';
   $handler->display->display_options['filters']['combine']['table'] = 'views';
@@ -218,10 +250,12 @@ function eesc_publishing_proposal_views_default_views() {
   $handler->display->display_options['filters']['combine']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
-    3 => 0,
-    4 => 0,
+    8 => 0,
     6 => 0,
     5 => 0,
+    7 => 0,
+    4 => 0,
+    3 => 0,
   );
   $handler->display->display_options['filters']['combine']['fields'] = array(
     'sid' => 'sid',
@@ -253,7 +287,31 @@ function eesc_publishing_proposal_views_default_views() {
   $handler->display->display_options['defaults']['use_more_text'] = FALSE;
   $handler->display->display_options['use_more_text'] = 'view all';
   $handler->display->display_options['defaults']['exposed_form'] = FALSE;
-  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['type'] = 'better_exposed_filters';
+  $handler->display->display_options['exposed_form']['options']['bef'] = array(
+    'general' => array(
+      'allow_secondary' => 0,
+      'secondary_label' => 'Advanced options',
+    ),
+    'combine' => array(
+      'bef_format' => 'default',
+      'more_options' => array(
+        'is_secondary' => 0,
+        'any_label' => '',
+        'bef_filter_description' => '',
+        'tokens' => array(
+          'available' => array(
+            0 => 'global_types',
+          ),
+        ),
+        'rewrite' => array(
+          'filter_rewrite_values' => '',
+        ),
+      ),
+    ),
+  );
+  $handler->display->display_options['exposed_form']['options']['input_required'] = 0;
+  $handler->display->display_options['exposed_form']['options']['text_input_required_format'] = 'full_html';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
@@ -320,9 +378,16 @@ function eesc_publishing_proposal_views_default_views() {
   $handler->display->display_options['fields']['edit_submission']['field'] = 'edit_submission';
   $handler->display->display_options['fields']['edit_submission']['ui_name'] = 'Edit link';
   $handler->display->display_options['fields']['edit_submission']['element_label_colon'] = FALSE;
+  /* Field: Webform views eesc project proposal 237: Notes */
+  $handler->display->display_options['fields']['notes']['id'] = 'notes';
+  $handler->display->display_options['fields']['notes']['table'] = 'webform_views_eesc_project_proposal_237';
+  $handler->display->display_options['fields']['notes']['field'] = 'notes';
+  $handler->display->display_options['fields']['notes']['exclude'] = TRUE;
 
   /* Display: Data export */
   $handler = $view->new_display('views_data_export', 'Data export', 'views_data_export_1');
+  $handler->display->display_options['defaults']['link_display'] = FALSE;
+  $handler->display->display_options['link_display'] = 'page';
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'views_data_export_csv';
