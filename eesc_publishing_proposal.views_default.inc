@@ -81,8 +81,8 @@ function eesc_publishing_proposal_views_default_views() {
     'corresponding_author_name' => 'corresponding_author_name',
     'status' => 'status',
     'status_date' => 'status_date',
+    'due_date' => 'due_date',
     'notes' => 'notes',
-    'edit_submission' => 'edit_submission',
   );
   $handler->display->display_options['style_options']['default'] = 'sid';
   $handler->display->display_options['style_options']['info'] = array(
@@ -147,14 +147,16 @@ function eesc_publishing_proposal_views_default_views() {
       'separator' => '',
       'empty_column' => 0,
     ),
-    'notes' => array(
+    'due_date' => array(
       'sortable' => 1,
       'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
     ),
-    'edit_submission' => array(
+    'notes' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
@@ -231,11 +233,23 @@ function eesc_publishing_proposal_views_default_views() {
   $handler->display->display_options['fields']['status_date']['table'] = 'webform_views_eesc_project_proposal_237';
   $handler->display->display_options['fields']['status_date']['field'] = 'status_date';
   $handler->display->display_options['fields']['status_date']['ui_name'] = 'Status date';
+  /* Field: Due date */
+  $handler->display->display_options['fields']['due_date']['id'] = 'due_date';
+  $handler->display->display_options['fields']['due_date']['table'] = 'webform_views_eesc_project_proposal_237';
+  $handler->display->display_options['fields']['due_date']['field'] = 'due_date';
+  $handler->display->display_options['fields']['due_date']['ui_name'] = 'Due date';
+  $handler->display->display_options['fields']['due_date']['element_default_classes'] = FALSE;
   /* Field: Notes */
   $handler->display->display_options['fields']['notes']['id'] = 'notes';
   $handler->display->display_options['fields']['notes']['table'] = 'webform_views_eesc_project_proposal_237';
   $handler->display->display_options['fields']['notes']['field'] = 'notes';
   $handler->display->display_options['fields']['notes']['ui_name'] = 'Notes';
+  /* Field: Edit link */
+  $handler->display->display_options['fields']['edit_submission']['id'] = 'edit_submission';
+  $handler->display->display_options['fields']['edit_submission']['table'] = 'webform_submissions';
+  $handler->display->display_options['fields']['edit_submission']['field'] = 'edit_submission';
+  $handler->display->display_options['fields']['edit_submission']['ui_name'] = 'Edit link';
+  $handler->display->display_options['fields']['edit_submission']['element_label_colon'] = FALSE;
   /* Filter criterion: Global: Combine fields filter */
   $handler->display->display_options['filters']['combine']['id'] = 'combine';
   $handler->display->display_options['filters']['combine']['table'] = 'views';
@@ -264,6 +278,12 @@ function eesc_publishing_proposal_views_default_views() {
     'corresponding_author_name' => 'corresponding_author_name',
     'notes' => 'notes',
   );
+  /* Filter criterion: Content: Nid */
+  $handler->display->display_options['filters']['nid']['id'] = 'nid';
+  $handler->display->display_options['filters']['nid']['table'] = 'node';
+  $handler->display->display_options['filters']['nid']['field'] = 'nid';
+  $handler->display->display_options['filters']['nid']['relationship'] = 'nid';
+  $handler->display->display_options['filters']['nid']['value']['value'] = '237';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
@@ -316,73 +336,6 @@ function eesc_publishing_proposal_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
   $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Proposal ID */
-  $handler->display->display_options['fields']['sid']['id'] = 'sid';
-  $handler->display->display_options['fields']['sid']['table'] = 'webform_submissions';
-  $handler->display->display_options['fields']['sid']['field'] = 'sid';
-  $handler->display->display_options['fields']['sid']['ui_name'] = 'Proposal ID';
-  $handler->display->display_options['fields']['sid']['label'] = 'Proposal ID';
-  $handler->display->display_options['fields']['sid']['separator'] = '';
-  /* Field: View link */
-  $handler->display->display_options['fields']['view_submission']['id'] = 'view_submission';
-  $handler->display->display_options['fields']['view_submission']['table'] = 'webform_submissions';
-  $handler->display->display_options['fields']['view_submission']['field'] = 'view_submission';
-  $handler->display->display_options['fields']['view_submission']['ui_name'] = 'View link';
-  $handler->display->display_options['fields']['view_submission']['element_label_colon'] = FALSE;
-  /* Field: Project title */
-  $handler->display->display_options['fields']['project_title']['id'] = 'project_title';
-  $handler->display->display_options['fields']['project_title']['table'] = 'webform_views_eesc_project_proposal_237';
-  $handler->display->display_options['fields']['project_title']['field'] = 'project_title';
-  $handler->display->display_options['fields']['project_title']['ui_name'] = 'Project title';
-  /* Field: Submit date */
-  $handler->display->display_options['fields']['submitted']['id'] = 'submitted';
-  $handler->display->display_options['fields']['submitted']['table'] = 'webform_submissions';
-  $handler->display->display_options['fields']['submitted']['field'] = 'submitted';
-  $handler->display->display_options['fields']['submitted']['ui_name'] = 'Submit date';
-  $handler->display->display_options['fields']['submitted']['label'] = 'Submit Date';
-  $handler->display->display_options['fields']['submitted']['date_format'] = 'custom';
-  $handler->display->display_options['fields']['submitted']['custom_date_format'] = 'Y-m-d';
-  $handler->display->display_options['fields']['submitted']['second_date_format'] = 'long';
-  $handler->display->display_options['fields']['submitted']['format_date_sql'] = 0;
-  /* Field: New or revision */
-  $handler->display->display_options['fields']['new_or_revision']['id'] = 'new_or_revision';
-  $handler->display->display_options['fields']['new_or_revision']['table'] = 'webform_views_eesc_project_proposal_237';
-  $handler->display->display_options['fields']['new_or_revision']['field'] = 'new_or_revision';
-  $handler->display->display_options['fields']['new_or_revision']['ui_name'] = 'New or revision';
-  /* Field: Project manager */
-  $handler->display->display_options['fields']['project_manager']['id'] = 'project_manager';
-  $handler->display->display_options['fields']['project_manager']['table'] = 'webform_views_eesc_project_proposal_237';
-  $handler->display->display_options['fields']['project_manager']['field'] = 'project_manager';
-  $handler->display->display_options['fields']['project_manager']['ui_name'] = 'Project manager';
-  $handler->display->display_options['fields']['project_manager']['empty'] = 'Not assigned';
-  $handler->display->display_options['fields']['project_manager']['empty_zero'] = TRUE;
-  /* Field: Corresponding author name */
-  $handler->display->display_options['fields']['corresponding_author_name']['id'] = 'corresponding_author_name';
-  $handler->display->display_options['fields']['corresponding_author_name']['table'] = 'webform_views_eesc_project_proposal_237';
-  $handler->display->display_options['fields']['corresponding_author_name']['field'] = 'corresponding_author_name';
-  $handler->display->display_options['fields']['corresponding_author_name']['ui_name'] = 'Corresponding author name';
-  /* Field: Status */
-  $handler->display->display_options['fields']['status']['id'] = 'status';
-  $handler->display->display_options['fields']['status']['table'] = 'webform_views_eesc_project_proposal_237';
-  $handler->display->display_options['fields']['status']['field'] = 'status';
-  $handler->display->display_options['fields']['status']['ui_name'] = 'Status';
-  /* Field: Status date */
-  $handler->display->display_options['fields']['status_date']['id'] = 'status_date';
-  $handler->display->display_options['fields']['status_date']['table'] = 'webform_views_eesc_project_proposal_237';
-  $handler->display->display_options['fields']['status_date']['field'] = 'status_date';
-  $handler->display->display_options['fields']['status_date']['ui_name'] = 'Status date';
-  /* Field: Edit link */
-  $handler->display->display_options['fields']['edit_submission']['id'] = 'edit_submission';
-  $handler->display->display_options['fields']['edit_submission']['table'] = 'webform_submissions';
-  $handler->display->display_options['fields']['edit_submission']['field'] = 'edit_submission';
-  $handler->display->display_options['fields']['edit_submission']['ui_name'] = 'Edit link';
-  $handler->display->display_options['fields']['edit_submission']['element_label_colon'] = FALSE;
-  /* Field: Webform views eesc project proposal 237: Notes */
-  $handler->display->display_options['fields']['notes']['id'] = 'notes';
-  $handler->display->display_options['fields']['notes']['table'] = 'webform_views_eesc_project_proposal_237';
-  $handler->display->display_options['fields']['notes']['field'] = 'notes';
-  $handler->display->display_options['fields']['notes']['exclude'] = TRUE;
 
   /* Display: Data export */
   $handler = $view->new_display('views_data_export', 'Data export', 'views_data_export_1');
@@ -441,11 +394,23 @@ function eesc_publishing_proposal_views_default_views() {
   $handler->display->display_options['fields']['status_date']['table'] = 'webform_views_eesc_project_proposal_237';
   $handler->display->display_options['fields']['status_date']['field'] = 'status_date';
   $handler->display->display_options['fields']['status_date']['ui_name'] = 'Status date';
+  /* Field: Due date */
+  $handler->display->display_options['fields']['due_date']['id'] = 'due_date';
+  $handler->display->display_options['fields']['due_date']['table'] = 'webform_views_eesc_project_proposal_237';
+  $handler->display->display_options['fields']['due_date']['field'] = 'due_date';
+  $handler->display->display_options['fields']['due_date']['ui_name'] = 'Due date';
   /* Field: Notes */
   $handler->display->display_options['fields']['notes']['id'] = 'notes';
   $handler->display->display_options['fields']['notes']['table'] = 'webform_views_eesc_project_proposal_237';
   $handler->display->display_options['fields']['notes']['field'] = 'notes';
   $handler->display->display_options['fields']['notes']['ui_name'] = 'Notes';
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Proposal ID */
+  $handler->display->display_options['sorts']['sid']['id'] = 'sid';
+  $handler->display->display_options['sorts']['sid']['table'] = 'webform_views_eesc_project_proposal_237';
+  $handler->display->display_options['sorts']['sid']['field'] = 'sid';
+  $handler->display->display_options['sorts']['sid']['ui_name'] = 'Proposal ID';
+  $handler->display->display_options['sorts']['sid']['order'] = 'DESC';
   $handler->display->display_options['path'] = 'admin/content/proposal-list/csv';
   $handler->display->display_options['displays'] = array(
     'page' => 'page',
